@@ -1,0 +1,22 @@
+agent:
+  label: builder-terraform
+  container: gcr.io/jenkinsxio/builder-terraform
+pipelines:
+  pullRequest:
+    build:
+      steps:
+        - sh: echo PR
+          name: dummy-build
+          container: gcr.io/jenkinsxio/builder-terraform
+
+  release:
+    build:
+      steps:
+        - sh: terraform -v
+          name: dummy-release
+          container: gcr.io/jenkinsxio/builder-terraform
+  feature:
+    build:
+      steps:
+        - sh: echo feature
+          name: dummy-feature
